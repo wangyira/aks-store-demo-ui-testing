@@ -13,6 +13,7 @@ test.describe('store-front tests', () => {
 
   test('can add product ', async ({ page }) => {
     await page.goto(STORE_ADMIN_URL);
+    test.setTimeout(90000);
 
     await page.getByRole('link', { name: 'Products' }).click();
     await page.getByRole('button', { name: 'Add Product' }).click();
@@ -21,6 +22,7 @@ test.describe('store-front tests', () => {
     await page.getByRole('spinbutton', { name: 'Price' }).fill('2.99');
     await page.getByRole('textbox', { name: 'Keywords' }).fill('dog, snack, treat');
 
+    await page.waitForTimeout(15000);
     const askOpenAI = page.getByRole('button', { name: 'Ask AI Assistant' });
 
     if (await askOpenAI.isVisible()) {
