@@ -19,7 +19,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --repeat-each 100 --workers 10
         env:
           STORE_FRONT_URL: ${{ secrets.STORE_FRONT_URL }}
           STORE_ADMIN_URL: ${{ secrets.STORE_ADMIN_URL }}
