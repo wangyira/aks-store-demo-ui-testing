@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   schedule:
-    - cron: "*/5 * * * *" # Run every 5 minutes
+    - cron: "*/15 * * * *" # Run every 15 minutes
 
   workflow_dispatch:
 
@@ -19,7 +19,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test --repeat-each 100 --workers 10
+        run: npx playwright test --repeat-each 50 --workers 10 # run the tests 50 times with 10 workers in parallel
         env:
           STORE_FRONT_URL: ${{ secrets.STORE_FRONT_URL }}
           STORE_ADMIN_URL: ${{ secrets.STORE_ADMIN_URL }}
